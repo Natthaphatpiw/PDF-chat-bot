@@ -1,5 +1,4 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
@@ -7,7 +6,7 @@ const f = createUploadthing();
 export const ourFileRouter = {
   pdfUpload: f({
     pdf: { maxFileSize: "4MB", maxFileCount: 1 },
-  }).onUploadComplete(async ({ metadata, file }) => {
+  }).onUploadComplete(async ({ file }) => {
     console.log("file url", file.url);
     return { uploadedBy: "JB" };
   }),

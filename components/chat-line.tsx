@@ -1,19 +1,9 @@
-import Balancer from "react-wrap-balancer";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Message } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import { formattedText } from "@/lib/utils";
 import { Bot, User } from "lucide-react";
@@ -24,14 +14,6 @@ interface ChatLineProps {
   sources?: string[];
 }
 
-const convertNewLines = (text: string) =>
-  text.split("\n").map((line, i) => (
-    <span key={i}>
-      {line}
-      <br />
-    </span>
-  ));
-
 export function ChatLine({
   role = "assistant",
   content,
@@ -40,7 +22,6 @@ export function ChatLine({
   if (!content) {
     return null;
   }
-  const formattedMessage = convertNewLines(content);
 
   return (
     <div className={`flex ${role === "user" ? "justify-end" : "justify-start"} mb-4`}>

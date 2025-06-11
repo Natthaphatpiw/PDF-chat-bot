@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Upload, MessageCircle, FileText, Bot } from "lucide-react";
+import { Upload, MessageCircle, Bot } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {

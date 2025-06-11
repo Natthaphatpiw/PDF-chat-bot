@@ -1,4 +1,4 @@
-import { UploadButton, UploadDropzone } from "@/lib/uploadthing";
+import { UploadDropzone } from "@/lib/uploadthing";
 import { Pencil, XCircle, Upload } from "lucide-react";
 import React from "react";
 import toast from "react-hot-toast";
@@ -16,9 +16,9 @@ import { MdTextSnippet } from "react-icons/md";
 type PDFUploadInputProps = {
   label: string;
   file: FileProps | null;
-  setFile: any;
+  setFile: (file: FileProps | null) => void;
   className?: string;
-  endpoint?: any;
+  endpoint?: "pdfUpload";
 };
 export type FileProps = {
   title: string;
@@ -71,7 +71,7 @@ export default function PDFFileUpload({
   file,
   setFile,
   className = "col-span-full",
-  endpoint = "",
+  endpoint = "pdfUpload",
 }: PDFUploadInputProps) {
   function handleImageRemove() {
     setFile(null);
@@ -142,7 +142,7 @@ export default function PDFFileUpload({
               allowedContent: "ไฟล์ PDF ขนาดไม่เกิน 4MB",
               button: "เลือกไฟล์ PDF"
             }}
-            onClientUploadComplete={(res: any) => {
+            onClientUploadComplete={(res: { url: string; name: string; size: number; type: string }[]) => {
               const item = res[0];
               const url = {
                 url: item.url,
@@ -156,7 +156,7 @@ export default function PDFFileUpload({
               console.log(res);
               console.log("Upload Completed");
             }}
-            onUploadError={(error: any) => {
+            onUploadError={(error: Error) => {
               toast.error("เกิดข้อผิดพลาดในการอัพโหลดไฟล์ กรุณาลองใหม่อีกครั้ง");
               console.log(`ERROR! ${error.message}`, error);
             }}

@@ -1,16 +1,16 @@
 "use client";
 
-import { scrollToBottom, initialMessages, getSources } from "@/lib/utils";
+import { initialMessages } from "@/lib/utils";
 import { useChat, Message } from "ai/react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { ChatLine } from "./chat-line";
 import { Loader2, Send, MessageCircle, Bot } from "lucide-react";
 
 export function Chat() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { messages, input, handleInputChange, handleSubmit, isLoading, data } =
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({
       initialMessages,
     });
@@ -38,7 +38,7 @@ export function Chat() {
           </div>
         ) : (
           <div className="space-y-4">
-            {messages.map(({ id, role, content }: Message, index) => (
+            {messages.map(({ id, role, content }: Message) => (
               <ChatLine
                 key={id}
                 role={role}

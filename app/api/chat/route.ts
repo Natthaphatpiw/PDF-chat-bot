@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Message, streamText } from "ai";
+import { Message } from "ai";
 import { LangChainAdapter } from "ai";
 import { getVectorStore } from "@/lib/vector-store";
-import { StringOutputParser } from "@langchain/core/output_parsers";
 import { ChatOpenAI } from "@langchain/openai";
 import { processUserMessage } from "@/lib/langchain";
 import { getPineconeClient } from "@/lib/pinecone-client";
@@ -48,7 +47,7 @@ export async function POST(req: NextRequest) {
     });
     const pc = await getPineconeClient();
     const vectorStore = await getVectorStore(pc);
-    const parser = new StringOutputParser();
+    
     const stream = await processUserMessage({
       userPrompt: currentQuestion,
       conversationHistory: formattedPreviousMessages,

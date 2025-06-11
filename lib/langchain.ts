@@ -1,7 +1,6 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
-import { RunnableSequence } from "@langchain/core/runnables";
 import { VectorStore } from "@langchain/core/vectorstores";
 
 interface ProcessMessageArgs {
@@ -9,11 +8,6 @@ interface ProcessMessageArgs {
   conversationHistory: string;
   vectorStore: VectorStore;
   model: ChatOpenAI;
-}
-
-interface ProcessMessageResponse {
-  answer: string;
-  inquiry: string;
 }
 
 export async function processUserMessage({
