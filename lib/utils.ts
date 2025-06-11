@@ -38,7 +38,7 @@ export const initialMessages: Message[] = [
     role: "assistant",
     id: "0",
     content:
-      "Hi! Customer assistant From Enerwat Engineering. Please Ask anything about Enerwat and here to help",
+      "สวัสดีครับ! ผมเป็น AI Knowledge Assistant ที่พร้อมช่วยเหลือคุณ หากคุณได้อัพโหลดไฟล์ PDF แล้ว กรุณาถามคำถามเกี่ยวกับเนื้อหาในไฟล์ได้เลยครับ ผมจะตอบโดยอ้างอิงจากข้อมูลในเอกสารของคุณ",
   },
 ];
 
